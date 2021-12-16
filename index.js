@@ -12,7 +12,7 @@ app.set('views',path.join(__dirname,'views'));
 app.get('/',function(req,res){
     // we dont need to set the content-type. it is automactically done my express
     // console.log(__dirname);
-    return res.render('home'); //since we have to render from a file.
+    return res.render('home',{title:"shubham here"}); //since we have to render from a file.
 
     // here instead of end() we use send().
 });
