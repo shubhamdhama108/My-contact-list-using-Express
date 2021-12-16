@@ -1,13 +1,18 @@
 const express = require('express');
+const path = require('path');
 const port =8000;
 
 const app= express(); //app is used as naming convention.
 
 // app.get() to return the response
 
+app.set('view engine', 'ejs');
+app.set('views',path.join(__dirname,'views'));
+
 app.get('/',function(req,res){
     // we dont need to set the content-type. it is automactically done my express
-    res.send('<h1>hi i think the page is rendered</h1>'); 
+    // console.log(__dirname);
+    return res.render('home'); //since we have to render from a file.
 
     // here instead of end() we use send().
 });
