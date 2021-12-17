@@ -9,12 +9,40 @@ const app= express(); //app is used as naming convention.
 app.set('view engine', 'ejs');
 app.set('views',path.join(__dirname,'views'));
 
+var contactList=[
+    {
+        name:'shubham',
+        phone:1234
+    },
+
+    {
+        name:'shubham',
+        phone:1234
+    },
+
+    {
+        name:'shubham',
+        phone:1234
+    }
+]
+
 app.get('/',function(req,res){
     // we dont need to set the content-type. it is automactically done my express
     // console.log(__dirname);
-    return res.render('home',{title:"shubham here"}); //since we have to render from a file.
+    return res.render('home',{
+        title:"Conatcts List",
+        contact_list:contactList
+    }); //since we have to render from a file.
 
     // here instead of end() we use send().
+});
+
+app.get('/practice',function(req,res){
+    return res.render('practice',
+    {
+        title:"my playground"
+ 
+    });
 });
 
 
@@ -26,4 +54,4 @@ app.listen(port,function(err){
 
     }
     console.log('my express server is running on port no:',port);
-})
+});
