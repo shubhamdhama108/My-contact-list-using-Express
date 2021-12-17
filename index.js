@@ -8,6 +8,7 @@ const app= express(); //app is used as naming convention.
 
 app.set('view engine', 'ejs');
 app.set('views',path.join(__dirname,'views'));
+app.use(express.urlencoded());
 
 var contactList=[
     {
@@ -44,6 +45,16 @@ app.get('/practice',function(req,res){
  
     });
 });
+
+app.post('/create_contact',function(req,res){
+    contactList.push({
+        name:req.body.name,
+        phone:req.body.phone
+    })
+
+
+    return res.redirect('/');
+})
 
 
 //app.listen() to listen to the request
