@@ -3,20 +3,24 @@ body {
 }
 
 /* header {
-  width: 400px;
+  background-color: khaki;
+  width: 438px;
   text-align: center;
 } */
 
 #page-heading {
+  /* background-color: khaki; */
+  /* width: 438px; */
   margin-top: 20px;
   text-align: center;
   color: grey;
   font-family: sans-serif;
+  margin-bottom: 0px;
 }
 
 #conatct-list-section {
   /* margin-top: 20px; */
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   text-align: center;
 }
 
@@ -26,15 +30,21 @@ body {
 }
 
 li {
-  margin-top: 10px;
-  background-color: bisque;
+  margin-top: 3px;
+  background-color: rgb(218, 238, 187);
   width: 438px;
   height: 30px;
   list-style: none;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  color: rgb(99, 95, 95);
   /* flex-direction: row; */
+}
+
+li:hover {
+  background-color: grey;
+  color: white;
 }
 
 li span {
@@ -49,4 +59,16 @@ li span {
 
 form {
   margin-left: 38px;
+}
+
+input {
+  line-height: 25px;
+  /* padding: 10px; */
+}
+button {
+  height: 31px;
+}
+
+input:focus {
+  outline: none;
 }
