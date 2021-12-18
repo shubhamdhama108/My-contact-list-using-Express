@@ -1,0 +1,52 @@
+body {
+  margin: 0px;
+}
+
+/* header {
+  width: 400px;
+  text-align: center;
+} */
+
+#page-heading {
+  margin-top: 20px;
+  text-align: center;
+  color: grey;
+  font-family: sans-serif;
+}
+
+#conatct-list-section {
+  /* margin-top: 20px; */
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#form-section {
+  /* margin-bottom: 10px; */
+  text-align: center;
+}
+
+li {
+  margin-top: 10px;
+  background-color: bisque;
+  width: 438px;
+  height: 30px;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* flex-direction: row; */
+}
+
+li span {
+  /* margin-left: 40px; */
+  font-size: 20px;
+  padding: 5px;
+}
+
+#contact-list {
+  display: inline-block;
+}
+
+form {
+  margin-left: 38px;
+}
