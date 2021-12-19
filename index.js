@@ -52,10 +52,21 @@ app.post('/create_contact',function(req,res){
     contactList.push({
         name:req.body.name,
         phone:req.body.phone
-    })
+    });
 
 
     return res.redirect('/');
+});
+
+app.get('/delete-contact', function(req,res){
+    let phone = req.query.phone;
+
+    let contactIndex = contactList.findIndex(contact =>contact.phone==phone);
+
+    if(contactIndex!=-1){
+        contactList.splice(contactIndex,1);
+    }
+    return res.redirect('back');
 })
 
 

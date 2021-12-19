@@ -22,9 +22,22 @@
             <ul id="contact-list">
                 <%for(let i of contact_list){%>
                     <li>
-                        <span id="list1" style="text-align: left;"><%=i.name%></span>
-                        <span id="list2"><%=i.phone%></span>
+                        <div id="details">
+                            <span id="list1" style="text-align: left;"><%=i.name%></span>
+                            <span id="list2"><%=i.phone%></span>
+
+                        </div>
+                        <div id="delete-button">
+                            <a href="/delete-contact/?phone=<%=i.phone%>">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </div>
+                        
+                        
+                        
                     </li>
+                    
+                    
                 <%}%>
 
                 
