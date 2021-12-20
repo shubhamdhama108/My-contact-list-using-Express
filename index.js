@@ -95,6 +95,7 @@ app.get('/delete-contact', function(req,res){
 
         return res.redirect('back');
         
+        
     });
 
    
