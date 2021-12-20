@@ -2,6 +2,9 @@ const express = require('express');
 const path = require('path');
 const port =8000;
 
+const db = require('./config/mongoose');
+const Contact = require('./models/contact');
+
 const app= express(); //app is used as naming convention.
 
 // app.get() to return the response
@@ -32,9 +35,18 @@ var contactList=[
 app.get('/',function(req,res){
     // we dont need to set the content-type. it is automactically done my express
     // console.log(__dirname);
-    return res.render('home',{
-        title:"Conatcts List",
-        contact_list:contactList
+
+    Contact.find({}, function(err,contacts){
+        if(err){
+            console.log('error in fetching contacts from db');
+            return;
+        }
+        return res.render('home',{
+            title:"Contacts List",
+            contact_list: contacts
+    }); 
+
+    
     }); //since we have to render from a file.
 
     // here instead of end() we use send().
@@ -49,25 +61,44 @@ app.get('/practice',function(req,res){
 });
 
 app.post('/create_contact',function(req,res){
-    contactList.push({
+    // contactList.push({
+    //     name:req.body.name,
+    //     phone:req.body.phone
+    // });
+
+    Contact.create({
         name:req.body.name,
         phone:req.body.phone
-    });
+    },function(err,newContact){
+        if(err){
+            console.log('error in creating contact');
+            return;
+        }
+
+        console.log('*********',newContact);
+        return res.redirect('back');
+    })
 
 
-    return res.redirect('/');
+    // return res.redirect('/');
 });
 
 app.get('/delete-contact', function(req,res){
-    let phone = req.query.phone;
+    let id = req.query.id;
 
-    let contactIndex = contactList.findIndex(contact =>contact.phone==phone);
+    //find the contact in the database using id and delete
+    Contact.findByIdAndDelete(id,function(err){
+        if(err){
+            console.log('error in deleting an object from databse');
+            return;
+        }
 
-    if(contactIndex!=-1){
-        contactList.splice(contactIndex,1);
-    }
-    return res.redirect('back');
-})
+        return res.redirect('back');
+    });
+
+   
+    
+});
 
 
 //app.listen() to listen to the request
